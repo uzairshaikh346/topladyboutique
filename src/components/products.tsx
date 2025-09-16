@@ -11,6 +11,7 @@ type Product = {
 
 export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
+  let showHEading = false
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -20,10 +21,16 @@ export default function Products() {
     };
     fetchProducts();
   }, []);
+  if( products.length > 0){
+    showHEading=true
+  }
 
   return (
-    <div className="max-w-5xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">All Products</h1>
+    <div className="max-w-5xl mx-auto p-6 text-[#2C0F12]">
+      {showHEading && (
+        <h1 className="text-3xl font-bold mb-6">Our Products</h1>
+      )
+      }
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {products.map((p) => (
           <div
