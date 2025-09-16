@@ -7,18 +7,18 @@ const BoutiqueNavbar = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <nav className="w-full shadow-lg" style={{ backgroundColor: '#6B1E23' }}>
+    <nav className="w-full shadow-lg" style={{ backgroundColor: '#ffffff' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo - Left */}
           <div className="flex-shrink-0">
-            <div className="text-2xl font-bold transition-all duration-300 hover:scale-105" style={{ color: '#F7F8F3' }}>
+            <div className="text-2xl font-bold transition-all duration-300 hover:scale-105" style={{ color: '#2C0F12' }}>
               BOUTIQUE
             </div>
           </div>
           {/* Desktop Search Bar - Center */}
           <div className="hidden md:flex flex-1 justify-center px-8">
-            <div className="relative max-w-md w-full">
+            <div className="relative max-w-md w-full border-[1px] border-[#2C0F12] rounded-md">
               <input
                 type="text"
                 placeholder="Search products..."
@@ -34,7 +34,7 @@ const BoutiqueNavbar = () => {
           <div className="hidden md:flex items-center space-x-4">
             <button
               className="relative p-2 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
-              style={{ backgroundColor: 'transparent', color: '#F7F8F3' }}
+              style={{ backgroundColor: 'transparent', color: '#2C0F12' }}
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#2C0F12')}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
             >

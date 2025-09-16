@@ -9,7 +9,7 @@ const BannerCarousel = ({
   autoplayDuration = 5000,
   transitionType = 'fade' // 'fade' or 'slide'
 }: {
-  images: Array<{ src: string; alt: string; title: string; subtitle: string }>;
+  images: Array<{ src: string; alt?: string; title?: string; subtitle?: string; buttonText?: string }>;
   autoplayDuration?: number;
   transitionType?: 'fade' | 'slide';
 }) => {
@@ -72,7 +72,7 @@ const BannerCarousel = ({
   };
 
   return (
-    <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden bg-[#2C0F12] group">
+    <div className="relative w-full h-[300px] md:h-[400px] lg:h-[450px] overflow-hidden bg-[#2C0F12] group rounded-xl md:rounded-2xl shadow-xl">
       <AnimatePresence mode="wait" custom={currentIndex}>
         <motion.div
           key={currentIndex}
@@ -98,22 +98,32 @@ const BannerCarousel = ({
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#2C0F12]/40 to-transparent" />
           
-          {/* Content overlay */}
+          {/* Content overlay - positioned like Toplady */}
           {images[currentIndex].title && (
-            <div className="absolute inset-0 flex items-center justify-start pl-8 md:pl-16">
+            <div className="absolute inset-0 flex items-center justify-start pl-8 md:pl-12 lg:pl-16">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="text-[#F7F8F3] max-w-md"
+                className="text-[#F7F8F3] max-w-lg"
               >
-                <h2 className="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 drop-shadow-lg leading-tight">
                   {images[currentIndex].title}
                 </h2>
                 {images[currentIndex].subtitle && (
-                  <p className="text-lg md:text-xl opacity-90 drop-shadow-md">
+                  <p className="text-base md:text-lg lg:text-xl opacity-90 drop-shadow-md mb-6 leading-relaxed">
                     {images[currentIndex].subtitle}
                   </p>
+                )}
+                {images[currentIndex].buttonText && (
+                  <motion.button
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6, duration: 0.6 }}
+                    className="bg-[#F7F8F3] text-[#2C0F12] px-8 py-3 rounded-full font-semibold text-sm md:text-base hover:bg-opacity-90 transition-all duration-300 shadow-lg"
+                  >
+                    {images[currentIndex].buttonText}
+                  </motion.button>
                 )}
               </motion.div>
             </div>
